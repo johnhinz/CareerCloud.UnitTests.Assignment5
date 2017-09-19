@@ -184,7 +184,7 @@ namespace CareerCloud.UnitTests.Assignment5
                 Id = Guid.NewGuid(),
                 IsInactive = false,
                 IsLocked = false,
-                Password = Faker.User.Password(10, true),
+                Password = "SoMePassWord#&@",
                 PasswordUpdate = Faker.Date.Forward(),
                 PhoneNumber = "555-416-9889",
                 PrefferredLanguage = "EN".PadRight(10)
@@ -277,7 +277,7 @@ namespace CareerCloud.UnitTests.Assignment5
         {
             _companyProfile = new CompanyProfilePoco()
             {
-                CompanyWebsite = Faker.Internet.Host(),
+                CompanyWebsite = "www.humber.ca",
                 ContactName = Faker.Name.FullName(),
                 ContactPhone = "416-555-8799",
                 RegistrationDate = Faker.Date.Past(),
@@ -691,15 +691,18 @@ namespace CareerCloud.UnitTests.Assignment5
             Assert.IsNotNull(securityLoginPoco);
             Assert.AreEqual(_securityLogin.Id, securityLoginPoco.Id);
             Assert.AreEqual(_securityLogin.Login, securityLoginPoco.Login);
+            // ########## Not checked because the logic layer overwrites these properties
             //Assert.AreEqual(_securityLogin.Password, securityLoginPoco.Password);
             //Assert.AreEqual(_securityLogin.Created.Date, securityLoginPoco.Created.Date);
             //Assert.AreEqual(_securityLogin.PasswordUpdate, securityLoginPoco.PasswordUpdate);
             Assert.AreEqual(_securityLogin.AgreementAccepted.Value.Date, securityLoginPoco.AgreementAccepted.Value.Date);
+            // ########## Not checked because the logic layer overwrites these properties
             //Assert.AreEqual(_securityLogin.IsLocked, securityLoginPoco.IsLocked);
             //Assert.AreEqual(_securityLogin.IsInactive, securityLoginPoco.IsInactive);
             Assert.AreEqual(_securityLogin.EmailAddress, securityLoginPoco.EmailAddress);
             Assert.AreEqual(_securityLogin.PhoneNumber, securityLoginPoco.PhoneNumber);
             Assert.AreEqual(_securityLogin.FullName, securityLoginPoco.FullName);
+            // ########## Not checked because the logic layer overwrites these properties
             //Assert.AreEqual(_securityLogin.ForceChangePassword, securityLoginPoco.ForceChangePassword);
             Assert.AreEqual(_securityLogin.PrefferredLanguage, securityLoginPoco.PrefferredLanguage);
         }
@@ -835,7 +838,7 @@ namespace CareerCloud.UnitTests.Assignment5
         {
             _companyProfile.TimeStamp = GetCompanyProfile(_companyProfile.Id.ToString()).TimeStamp;
 
-            _companyProfile.CompanyWebsite = Faker.Internet.Host();
+            _companyProfile.CompanyWebsite = "www.humber.com";
             _companyProfile.ContactName = Faker.Name.FullName();
             _companyProfile.ContactPhone = "999-555-8799";
             _companyProfile.RegistrationDate = Faker.Date.Past();
@@ -945,7 +948,7 @@ namespace CareerCloud.UnitTests.Assignment5
             _securityLogin.FullName = Faker.Name.FullName();
             _securityLogin.IsInactive = true;
             _securityLogin.IsLocked = true;
-            _securityLogin.Password = Faker.User.Password(10, true);
+            _securityLogin.Password = "SoMePassWord@&@";
             _securityLogin.PasswordUpdate = Faker.Date.Forward();
             _securityLogin.PhoneNumber = "416-416-9889";
             _securityLogin.PrefferredLanguage = "FR".PadRight(10);
